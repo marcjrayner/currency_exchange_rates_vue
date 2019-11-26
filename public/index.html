@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exchange Rate Apps</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="text/javascript" src="./js/bundle.js"></script>
+  </head>
+  <body>
+    <div id="app">
+    <h1>Exhcange rates from Euros</h1>
+
+      <label for="currency">Select Currency</label>
+
+      <select v-model="selectedRate">
+        <option v-for="(rate, currencyName) in allRates" v-bind:value="currencyName">{{currencyName}}</option>
+      </select>
+      <p>Conversion Rate: {{ allRates[selectedRate] }}</p>
+
+      <label for="amount">Convert €: </label>
+      <input type="number" v-model.number="amount"/>
+
+      <label v-bind:value="calculateResult">In exchange for your Euros, you will receive: {{selectedRate}} {{calculateResult}} </label>
+      <hr>
+      <h1>Exhcange rates to Euros</h1>
+
+        <label for="currency">Select Currency</label>
+
+        <select v-model="selectedRate2">
+          <option v-for="(rate, currencyName) in allRates" v-bind:value="currencyName">{{currencyName}}</option>
+        </select>
+        <!-- <p>Conversion Rate: {{ allRates[selectedRate] }}</p> -->
+
+        <label for="reverseAmount">Convert {{selectedRate2}}: </label>
+        <input type="number" v-model.number="reverseAmount"/>
+
+        <label v-bind:value="calculateResult2">In exchange for your {{selectedRate2}}, you will receive: € {{calculateResult2}} </label>
+
+  </div>
+  </body>
+</html>
